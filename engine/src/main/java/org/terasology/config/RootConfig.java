@@ -43,6 +43,7 @@ public final class RootConfig {
     private SelectModulesConfig selectModulesConfig = new SelectModulesConfig();
     private IdentityStorageServiceConfig identityStorageService = new IdentityStorageServiceConfig();
     private TelemetryConfig telemetryConfig = new TelemetryConfig();
+    private WebBrowserConfig webBrowserConfig = new WebBrowserConfig();
 
     /**
      * Create a new, empty config
@@ -112,5 +113,9 @@ public final class RootConfig {
 
     public Map<SimpleUri, Map<String, JsonElement>> getModuleConfigs() {
         return moduleConfigs;
+    }
+
+    public WebBrowserConfig getWebBrowserConfig() {
+        return webBrowserConfig;
     }
 }

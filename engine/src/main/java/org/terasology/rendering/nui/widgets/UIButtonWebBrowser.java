@@ -18,7 +18,10 @@ package org.terasology.rendering.nui.widgets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.terasology.config.Config;
+import org.terasology.config.WebBrowserConfig;
 import org.terasology.i18n.TranslationSystem;
+import org.terasology.registry.In;
 import org.terasology.rendering.nui.NUIManager;
 import org.terasology.rendering.nui.databinding.Binding;
 import org.terasology.rendering.nui.databinding.DefaultBinding;
@@ -36,6 +39,11 @@ import java.net.URISyntaxException;
 public class UIButtonWebBrowser extends UIButton {
 
     private static final Logger logger = LoggerFactory.getLogger(UIButtonWebBrowser.class);
+
+    @In
+    private Config config;
+
+    private WebBrowserConfig webBrowserConfig;
 
     private Binding<Boolean> confirmed = new DefaultBinding<>();
 
@@ -55,6 +63,7 @@ public class UIButtonWebBrowser extends UIButton {
     private TranslationSystem translationSystem;
 
     public UIButtonWebBrowser() {
+        webBrowserConfig = config.getWebBrowserConfig();
         this.subscribe(openInDefaultBrowser);
     }
 
@@ -108,6 +117,7 @@ public class UIButtonWebBrowser extends UIButton {
         confirmationPopup.setLeftButton(translationSystem.translate("${engine:menu#dialog-yes}"), this::confirm);
         confirmationPopup.setRightButton(translationSystem.translate("${engine:menu#dialog-no}"), () -> {
         });
+        //todo The checkbox will go here
     }
 
     private void showErrorPopup(final String message) {

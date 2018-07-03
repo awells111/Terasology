@@ -142,6 +142,10 @@ public final class Config {
         return config.getSelectModulesConfig();
     }
 
+    public WebBrowserConfig getWebBrowserConfig() {
+        return config.getWebBrowserConfig();
+    }
+
     /**
      * Saves this config to the default configuration file
      */
